@@ -1,8 +1,7 @@
 def solution(str_list, ex):
-    new_list = []
+    answer = ''
     for i in str_list:
         if ex not in i:
-            new_list.append(i)
+            answer += i
     
-    answer = ''.join(new_list)
     return answer
