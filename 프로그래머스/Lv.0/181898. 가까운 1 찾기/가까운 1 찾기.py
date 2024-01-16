@@ -1,10 +1,7 @@
 # 문제 잘못됨 idx보다 '같거나 큰'임
 def solution(arr, idx):
-    ans = 0
-    for i in range(len(arr)):
+    for i in range(idx, len(arr)):
         if arr[i] == 1:
-            ans = i
-            if ans >= idx:
-                return ans
+            return i
     return -1
             
