@@ -1,8 +1,8 @@
 def solution(strArr):
-    answer = []
-    for i in range(len(strArr)):
-        if i % 2 == 1:
-            answer.append(strArr[i].upper())
-        else:
-            answer.append(strArr[i].lower())
-    return answer
+    for i in range(0, len(strArr), 2):
+        strArr[i] = strArr[i].lower()
+        
+    for i in range(1, len(strArr), 2):
+        strArr[i] = strArr[i].upper()
+        
+    return strArr
