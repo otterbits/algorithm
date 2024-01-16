@@ -1,5 +1,6 @@
 def solution(arr):
     answer = []
     for i in arr:
-        answer += [i] * i
+        for j in range(i):
+            answer.append(i)
     return answer
