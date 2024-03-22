@@ -1,29 +1,31 @@
 import sys
+input = sys.stdin.readline
 
-N = int(sys.stdin.readline().strip())
-
-
-# 소수 판별
 def is_prime_number(x):
-    # 가운데 약수 기준으로 대칭
     for i in range(2, int(x ** 0.5 + 1)):
         if x % i == 0:
             return False
     return True
 
+# 자릿수
+N = int(input())
 
-def dfs(n):
-    # 해당 자릿수면 출력
-    if len(str(n)) == N:
-        print(n)
+
+def dfs(num):
+    # 자릿수와 같으면 출력해라
+    if len(str(num)) == N:
+        print(num)
+        return
     else:
-        # 자릿수 변동
-        for i in range(10):
-            if is_prime_number(n * 10 + i):
-                dfs(n * 10 + i)
+        for i in range(1, 10):
+            # 다음 자릿수 구하는 것
+            next_digit = num * 10 + i
+            # 소수면 자릿수 비교해라
+            if is_prime_number(next_digit):
+                dfs(next_digit)
 
 
-# 소수 4개 대입
+# 일의 자릿수일 때 소수인 4개의 숫자
 dfs(2)
 dfs(3)
 dfs(5)
