@@ -1,4 +1,3 @@
-from collections import deque
 import sys
 input = sys.stdin.readline
 
@@ -7,23 +6,25 @@ connect = int(input())
 # 1부터 시작
 network = [[] for _ in range(com + 1)]
 visited = [False] * (com + 1)
-cnt = 0
 
 for _ in range(connect):
     first, last = map(int, input().split())
     network[first].append(last)
     network[last].append(first)
 
-queue = deque([1])
-while queue:
-    current = queue.popleft()
-    visited[1] = True
+cnt = 0
+# 무조건 1번 컴퓨터부터 시작이니까
+visited[1] = True
+
+# dfs
+stack = [1]
+
+while stack:
+    current = stack.pop()
     for i in network[current]:
         if not visited[i]:
-            queue.append(i)
             visited[i] = True
+            stack.append(i)
             cnt += 1
 
 print(cnt)
-
-
