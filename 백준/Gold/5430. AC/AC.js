@@ -18,7 +18,7 @@ for (let i = 0; i < input.length; i += 3) {
             isReverse = !isReverse;
         } else if (nowCmd === "D") {
             // arr이 없는데 delete를 하면 error니 break한다.
-            // 추가 명령어이가 없으니 더 이상 R, D의 명령어를 볼 필요가 없다.
+            // 추가 명령어가 없으니 더 이상 R, D의 명령어를 볼 필요가 없다.
             if (arr.length === 0) {
                 isError = true;
                 break
