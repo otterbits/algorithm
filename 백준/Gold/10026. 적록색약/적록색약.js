@@ -8,6 +8,7 @@ const grid = input.slice(1).map(v => v.split(""));
 const dx = [1, 0, -1, 0];
 const dy = [0, 1, 0, -1];
 
+// visited 배열 초기화 (적록색약일 때도 구해야하기 때문)
 function getVisited () {
     return Array.from({length : num}, () => Array.from({length : num}, () => false));
 }
@@ -24,12 +25,15 @@ function dfs (x, y, visible) {
             let nx = nowX + dx[i]
             let ny = nowY + dy[i]
             if (nx >= 0 && nx < num && ny >= 0 && ny < num && !visited[nx][ny]) {
+                // 보통일 때
                 if (visible) {
                     if (grid[nowX][nowY] === grid[nx][ny]) {
                         visited[nx][ny] = true;
                         stack.push([nx, ny]);
                     }
+                // 적록색약일 때
                 } else {
+                    // G == R 똑같이 보이므로
                     if ((grid[nowX][nowY] === 'R' && grid[nx][ny] === 'G') || (grid[nowX][nowY] === 'G' && grid[nx][ny] === 'R')) {
                         visited[nx][ny] = true;
                         stack.push([nx, ny]);
